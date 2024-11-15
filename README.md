@@ -33,10 +33,12 @@ This project is a Complaint Management System built with React and Vite. It allo
     ```
 
 ## Usage
+## Usage
 
-- **Login**: Use the following credentials to log in:
-  - Admin: `admin@example.com` / `admin`
-  - Super-Admin: `superadmin@example.com` / `superadmin`
+- **Register**: Go to `/register` to create a new account.
+- **Login**: Use the registered credentials to log in.
+- **Dashboard**: Depending on the role, users will be redirected to the appropriate dashboard.
+
 
 - **Dashboard**: Depending on the role, users will be redirected to the appropriate dashboard.
 

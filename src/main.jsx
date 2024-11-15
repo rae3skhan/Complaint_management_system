@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext';
 import SolvedCases from './Component/Tables/SolvedCases.jsx';
 import Login from './Component/Login/Login.jsx';
+import Register from './Component/Register/Register.jsx';
 import Complaints from './Component/ComplaintsFolder/Complaints.jsx';
 import AddCases from './Component/Tables/AddCases.jsx';
 import PendingCases from './Component/Tables/PendingCases.jsx';
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
     ],
   },
   { path: '/login', element: <Login /> },
+  { path: '/register', element: <Register /> },
 ]);
 
 createRoot(document.getElementById('root')).render(
