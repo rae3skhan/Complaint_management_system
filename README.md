@@ -22,24 +22,31 @@ This project is a Complaint Management System built with React and Vite. It allo
     cd complaint-management-system
     ```
 
-2. Install dependencies:
+2. Install frontend dependencies:
     ```sh
     npm install
     ```
 
-3. Start the development server:
+3. Start the frontend development server:
     ```sh
     npm run dev
     ```
 
-## Usage
+4. Navigate to the backend directory and install backend dependencies:
+    ```sh
+    cd backend
+    npm install
+    ```
+
+5. Start the backend server:
+    ```sh
+    node server.js
+    ```
+
 ## Usage
 
 - **Register**: Go to `/register` to create a new account.
 - **Login**: Use the registered credentials to log in.
-- **Dashboard**: Depending on the role, users will be redirected to the appropriate dashboard.
-
-
 - **Dashboard**: Depending on the role, users will be redirected to the appropriate dashboard.
 
 ## Authentication
@@ -58,4 +65,9 @@ Authentication is managed using a custom context in `src/context/AuthContext.jsx
 - **Admin Requests**: `src/Component/Tables/AdminRequest.jsx`
 - **Buttons**: `src/Component/Buttons/Buttons.jsx`
 - **Login**: `src/Component/Login/Login.jsx`
+- **Register**: `src/Component/Register/Register.jsx`
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 

@@ -1,22 +1,26 @@
 import React, { createContext, useContext, useState } from 'react';
+import axios from 'axios';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [users, setUsers] = useState([]);
 
-  const login = (userData) => {
-    const user = users.find(u => u.email === userData.email && u.password === userData.password);
-    if (user) {
-      setUser(user);
-    } else {
+  const login = async (userData) => {
+    try {
+      const response = await axios.post('http://localhost:5000/login', userData);
+      setUser(response.data);
+    } catch (error) {
       alert('Invalid credentials');
     }
   };
 
-  const register = (userData) => {
-    setUsers([...users, userData]);
+  const register = async (userData) => {
+    try {
+      await axios.post('http://localhost:5000/register', userData);
+    } catch (error) {
+      alert('Registration failed');
+    }
   };
 
   const logout = () => {
