@@ -8,17 +8,13 @@ function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Mock authentication logic
-    if (email === 'admin@example.com' && password === 'admin') {
-      login({ role: 'admin' });
+    try {
+      await login({ email, password });
       navigate('/');
-    } else if (email === 'superadmin@example.com' && password === 'superadmin') {
-      login({ role: 'super-admin' });
-      navigate('/');
-    } else {
-      alert('Invalid credentials');
+    } catch (error) {
+      console.error('Login failed:', error);
     }
   };
 

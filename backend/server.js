@@ -7,7 +7,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/complaint-management');
+mongoose.connect('mongodb://localhost:27017/complaint-management')
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
@@ -18,11 +20,18 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model('User', UserSchema);
 
 app.post('/register', async (req, res) => {
-  const { email, password, role } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const user = new User({ email, password: hashedPassword, role });
-  await user.save();
-  res.status(201).send('User registered');
+  try {
+    const { email, password, role } = req.body;
+    console.log('Registering user:', { email, role });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new User({ email, password: hashedPassword, role });
+    await user.save();
+    console.log('User registered successfully:', { email, role });
+    res.status(201).send('User registered');
+  } catch (error) {
+    console.error('Registration error:', error);
+    res.status(500).send('Registration failed');
+  }
 });
 
 app.post('/login', async (req, res) => {
